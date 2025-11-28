@@ -1,0 +1,14 @@
+html{
+    font-size: 16px;
+    text-align: center;
+}
+h1  {
+    font-size: 4rem;
+}
+div {
+    width: 50%;
+    position: relative;
+    left: 25%;
+    border-style: solid;
+    border-color: gray;
+}
