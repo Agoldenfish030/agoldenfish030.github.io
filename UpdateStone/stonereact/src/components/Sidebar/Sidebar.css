@@ -1,0 +1,120 @@
+/*===[PART2: sidebar, class*11+2]===============================================================================================*/
+
+/* 修改後的 .sidebar */
+.sidebar {
+    /* 1. 基礎寬度與過渡 */
+    width: 200px; 
+    flex-shrink: 0; 
+    transition: width 0.3s ease;
+
+    /* 2. 視覺核心：鎖定高度在視窗 */
+    height: 100%;      /* 確保它永遠跟螢幕一樣高 */
+    position: sticky;   /* 讓它在父容器捲動時釘在左邊 */
+    /* 3. 背景核心：處理垂直重複 #3e5770*/
+    background: #38546f repeat-y left top;
+    background-size: 100% auto; /* 確保收合或展開時，背景寬度都跟隨 Sidebar */
+
+    /* 4. 其他原本的樣式保持不動 */
+    color: white;
+    padding: 43px 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    z-index: 100;
+}
+
+.sidebar-header {
+    padding-left: 15px;
+
+    /* 在收合時，即便文字不換行，我們也要用透明度隱藏它 */
+    opacity: 1;
+    transition: opacity 0.3s ease; /* 讓它淡入/淡出，但沒有延遲 */
+}
+
+.menu-list {
+    padding-left: 10px;
+    list-style-type: none;
+
+    /* 在收合時，即便文字不換行，我們也要用透明度隱藏它 */
+    opacity: 1;
+    transition: opacity 0.3s ease; /* 讓它淡入/淡出，但沒有延遲 */
+}
+
+/* 選單列表樣式 */
+.menu-list a {
+    display: flex; /* 使用 Flexbox 讓圖示和文字對齊 */
+    align-items: center;
+    text-decoration: none;
+    color: inherit; /* 繼承父層的白色 */
+    padding: 10px;
+    border-radius: 4px;
+    gap: 10px;
+}
+
+/*
+.menu-list li {
+    padding: 0; /* 移除 li 的 padding，改放到 a 標籤上 
+    margin-bottom: 5px;
+}
+*/
+
+/* 圖示間距 */
+.menu-list i {
+    margin-right: 15px; /* 增加圖示和文字之間的距離 */
+    width: 20px; /* 確保圖示佔用固定寬度，保持文字對齊 */
+    text-align: center;
+}
+
+.menu-list li:hover {
+    background-color: #34495e;
+    text-decoration: underline #ffffff;
+}
+
+/* 側邊欄內部內容的容器 */
+.sidebar-content {
+    /* 選單標題、選項等內容 */
+    opacity: 1;
+    visibility: visible;
+    /*transition: opacity 0.3s ease 0.1s, visibility 0.3s ease 0.1s; /* 稍微延遲隱藏，讓寬度先縮小 */
+
+    white-space: nowrap; 
+    /* 確保溢出側邊欄寬度的內容被隱藏 */
+    overflow: hidden; 
+    /* 避免內容溢出時出現橫向滾動條 */
+    text-overflow: ellipsis; /* 可選：讓被裁切的文字顯示 ... */
+
+}
+
+/* 側邊欄收合狀態 */
+.sidebar.collapsed {
+    width: 70px;
+    padding: 0px;
+}
+
+/* 側邊欄收合時隱藏內容 */
+.sidebar.collapsed .sidebar-content {
+    opacity: 0; /* 內容淡出 */
+    visibility: hidden; /* 確保內容不被點擊 */
+    pointer-events: none;
+}
+
+/* 側邊欄收合時，按鈕位置要跟著移動 
+.sidebar.collapsed + .toggle-btn { 
+    left: 15px; /* 60px (收合寬度) + 10px 邊距 
+}
+*/
+
+/* 按鈕樣式 */
+.toggle-btn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1000; /* 確保按鈕在最上層 */
+    background: #38546f;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 4px;
+    transition: left 0.3s ease;
+}
