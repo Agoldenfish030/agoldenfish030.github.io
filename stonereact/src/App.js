@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Layout from './components/MainArea/Layout';
 import Home from './components/MainArea/Home';
@@ -71,7 +71,7 @@ function App() {
                 transition: 'all 0.3s ease' 
             }}
         >
-            <Router basename="/stonereact">
+            <Router>
                 <Layout>
                     <Routes>
                         {/* 確保這一行存在，路徑要跟網址對應 */}
