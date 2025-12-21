@@ -17,7 +17,7 @@ const mockTrelloTasks = [
     description: "定義經驗值計算公式、角色升級條件",
     dueDate: "2025-12-30T10:00:00Z",
     listName: "後端待辦",
-    isCompleted: true,
+    isCompleted: false,
     priority: "Medium",
     xpValue: 80,
   },
@@ -30,6 +30,66 @@ const mockTrelloTasks = [
     isCompleted: false,
     priority: "High",
     xpValue: 100,
+  },
+  {
+    id: "t4",
+    title: "串接 Trello API 授權",
+    description: "OAuth 流程實作，獲取 Token",
+    dueDate: null, // 無截止日期
+    listName: "後端進行中",
+    isCompleted: false,
+    priority: "High",
+    xpValue: 80,
+  },
+  {
+    id: "t5",
+    title: "串接 Trello API 授權",
+    description: "OAuth 流程實作，獲取 Token",
+    dueDate: null, // 無截止日期
+    listName: "後端進行中",
+    isCompleted: false,
+    priority: "High",
+    xpValue: 10,
+  },
+  {
+    id: "t6",
+    title: "串接 Trello API 授權",
+    description: "OAuth 流程實作，獲取 Token",
+    dueDate: null, // 無截止日期
+    listName: "後端進行中",
+    isCompleted: false,
+    priority: "High",
+    xpValue: 20,
+  },
+  {
+    id: "t7",
+    title: "串接 Trello API 授權",
+    description: "OAuth 流程實作，獲取 Token",
+    dueDate: null, // 無截止日期
+    listName: "後端進行中",
+    isCompleted: false,
+    priority: "High",
+    xpValue: 88,
+  },
+  {
+    id: "t8",
+    title: "串接 Trello API 授權",
+    description: "OAuth 流程實作，獲取 Token",
+    dueDate: null, // 無截止日期
+    listName: "後端進行中",
+    isCompleted: false,
+    priority: "High",
+    xpValue: 130,
+  },
+  {
+    id: "t9",
+    title: "串接 Trello API 授權",
+    description: "OAuth 流程實作，獲取 Token",
+    dueDate: null, // 無截止日期
+    listName: "後端進行中",
+    isCompleted: false,
+    priority: "High",
+    xpValue: 15,
   },
 ];
 

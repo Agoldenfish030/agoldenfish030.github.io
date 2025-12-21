@@ -49,17 +49,27 @@ function App() {
     };
 
     // 遊戲動作：處理獲得經驗與升級
-    const handleTaskComplete = (xpGain) => {
-        setXp(prev => {
-            let nextXp = prev + xpGain;
-            if (nextXp >= 100) {
-                nextXp -= 100;
-                setLevel(lv => lv + 1);
-                alert("恭喜升級！");
-            }
-            return nextXp;
-        });
+    const handleTaskComplete = (xpGain, taskTitle) => {
+        alert(`任務:「${taskTitle}」已完成！獲得經驗值！`);
+        setXp(prev => Number(prev) + Number(xpGain));
     };
+
+    useEffect(() => {
+        if (xp >= 100) {
+            const levelUps = Math.floor(xp / 100);
+            const leftovers = xp % 100;
+
+            // 先把 XP 歸位到剩下的餘數
+            setXp(leftovers);
+            // 再增加等級
+            setLevel(prev => prev + levelUps);
+
+            // 確保前面的 alert 關掉後才跳出這個
+            setTimeout(() => {
+                alert(`恭喜升級！目前的等級是 Lv.${Number(level) + levelUps}`);
+            }, 300);
+        }
+    }, [xp, level]); // 只有 xp 變動時才會跑檢查
 
     return (
         <div 
@@ -82,6 +92,7 @@ function App() {
                                 xp={xp} 
                                 level={level} 
                                 onTaskComplete={handleTaskComplete} 
+                                themeColor={themeColor} 
                             />
                         } />
                         

@@ -1,6 +1,10 @@
 /* Home.css */
 .home-container {
     padding: 20px;
+    display: flex;
+    flex-wrap: wrap; /* 當寬度不夠時，元件會自動換行 */
+    justify-content: center;
+    gap: 15px;
 }
 
 /* 角色面板樣式 */
@@ -38,12 +42,13 @@
     display: grid;
     gap: 15px;
     margin-top: 15px;
+    width: 100%;
 }
 
 /* 新增任務區域樣式 */
 .add-task-section {
-    margin-top: 40px;
-    padding-top: 20px;
+    margin-top: 25px;
+    padding-top: 25px;
     border-top: 1px solid #ddd;
 }
 

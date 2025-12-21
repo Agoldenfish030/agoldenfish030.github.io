@@ -4,12 +4,14 @@
     background-color: #e3f0ff;
     border-radius: 6px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    margin: 10px;
+    margin: 5px 10px 5px;
     padding-left: 8px;
     gap: 5px;
+    display: flex;
 
     position: relative;
     padding-bottom: 48px;
+    flex-direction: column; /* 讓內容預設就由上往下排 */
 }
 
 .card-header h4 {
@@ -18,7 +20,6 @@
 
 .card-title{
     padding-top: 8px;
-    padding-left: 6px;
     display: block;
 }
 
@@ -83,4 +84,31 @@
     position: absolute;
     bottom: 10px;
     right: 15px;
+}
+
+@media (max-width: 1000px) {
+    .todo-card {
+        align-items: center; /* 讓內容在手機上居中 */
+        text-align: center;
+        padding: 15px;
+        
+    }
+
+    .card-header, .card-footer {
+        flex-direction: column; /* 強制垂直排列 */
+        align-items: center;
+        width: 100%;
+    }
+
+    .list-tag, .card-meta {
+        justify-content: center;
+        position: static;
+    }
+
+    .complete-btn, .completed-btn {
+        position: static; /* 確保按鈕不會浮在別人上面 */
+        width: 80%;
+        justify-content: center;
+        padding: 10px;
+    }
 }

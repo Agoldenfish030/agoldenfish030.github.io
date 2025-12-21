@@ -12,7 +12,10 @@ const HomeContent = ({ name, xp, level, onTaskComplete }) => {
         if (!targetTask) return;
 
         if (onTaskComplete) {
-            onTaskComplete(targetTask.xpValue || 20);
+            const xpToSubmit = parseInt(targetTask.xpValue, 10) || 20;
+            const titleToSubmit = targetTask.title || "未命名任務";
+
+            onTaskComplete(xpToSubmit, titleToSubmit);
         }
 
         setTasks(prevTasks => 
@@ -20,7 +23,7 @@ const HomeContent = ({ name, xp, level, onTaskComplete }) => {
                 task.id === taskId ? { ...task, isCompleted: true } : task
             )
         );
-        alert(`任務:「${targetTask.title}」已完成！獲得經驗值！`);
+        
     };
 
     const addTask = () => {
@@ -74,7 +77,7 @@ const HomeContent = ({ name, xp, level, onTaskComplete }) => {
                     <input 
                         value={inputValue} 
                         onChange={(e) => setInputValue(e.target.value)}
-                        placeholder="新增任務..."
+                        placeholder="任務標籤..."
                         style={{ width: '40%', padding: '5px' }}
                     />
                     <button onClick={addTask} style={{ marginLeft: '5px' }}>發佈</button>
