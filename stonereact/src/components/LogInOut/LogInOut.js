@@ -2,6 +2,9 @@
 import React, { useState } from 'react';
 import './LogInOut.css'
 
+//to backend
+import logInLink from '../controlToken/getLogInLink';
+
 const LogInOuts = () => {
 
     return (
@@ -15,7 +18,7 @@ const LogInOuts = () => {
                     </div>
 
                     <form className="login-form" >
-                        <button type="submit" className="login-submit-btn">
+                        <button type="submit" className="login-submit-btn" onClick={logInLink}>
                             {'連結Trello'}
                         </button>
                     </form>

@@ -20,7 +20,7 @@ const userToken = ()=>{
             sessionStorage.setItem('userState', state);
 
             //登入成功後跳轉回主畫面
-            navigate('https://too-much-stone-to-do.vercel.app');
+            navigate('https://agoldenfish030.github.io/#/');
         }
     }, [navigate]);
 }

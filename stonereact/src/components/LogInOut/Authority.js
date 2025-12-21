@@ -1,6 +1,10 @@
 import React from 'react';
 
+//to backend
+import userToken from '../controlToken/getUserToken';
+
 const Log = () => {
+    userToken();
 
     return (
         <div style={{ 
