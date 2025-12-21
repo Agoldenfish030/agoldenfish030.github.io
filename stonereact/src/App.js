@@ -81,7 +81,7 @@ function App() {
                 transition: 'all 0.3s ease' 
             }}
         >
-            <Router>
+            <Router basename="/stonereact">
                 <Layout>
                     <Routes>
                         {/* 確保這一行存在，路徑要跟網址對應 */}
