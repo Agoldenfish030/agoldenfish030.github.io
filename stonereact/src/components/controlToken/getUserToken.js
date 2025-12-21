@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate as UseNavigate } from 'react-router-dom';
 
-const userToken = ()=>{
+const UserToken = ()=>{
     const navigate = UseNavigate();
 
     useEffect(async() => {
@@ -25,4 +25,4 @@ const userToken = ()=>{
     }, [navigate]);
 }
 
-export default userToken;
+export default UserToken;
