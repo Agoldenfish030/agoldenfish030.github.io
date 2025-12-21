@@ -49,6 +49,7 @@
     margin-right: 15px; /* 增加圖示和文字之間的距離 */
     width: 20px; /* 確保圖示佔用固定寬度，保持文字對齊 */
     text-align: center;
+    flex-wrap: 20px;
 }
 
 .menu-list li:hover {

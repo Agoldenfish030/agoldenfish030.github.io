@@ -3,7 +3,7 @@
 /* 基礎樣式 */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Press Start 2P';
     color: #333;
 }
 
@@ -21,14 +21,14 @@ body {
 .main-content {
     display: flex; /* 左右兩區塊分割 */
     flex-grow: 1; /* 佔據剩餘所有寬度 */
-    padding: 15px 20px;
+    padding: 15px 18px;
     gap: 30px;
     transition: margin-left 0.3s ease;
     background-color: transparent;
 }
 
 .game-area, .todo-list-area {
-    padding: 18px;
+    padding: 25px;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);

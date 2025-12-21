@@ -5,7 +5,11 @@ import './Home.css'; // 確保這就是你上面那份 CSS 的檔名
 
 const HomeContent = ({ name, xp, level, onTaskComplete }) => {
     const [tasks, setTasks] = useState(mockTrelloTasks);
-    const [inputValue, setInputValue] = useState('');
+    // 在 HomeContent 內部新增：
+    const [inputValue, setInputValue] = useState('');     // 任務名稱
+    const [inputTag, setInputTag] = useState('');         // 標籤
+    const [inputDate, setInputDate] = useState('');       // 截止日期
+    const [inputXP, setInputXP] = useState(20);           // 自訂 XP，預設 20
 
     const taskComplete = (taskId) => {
         const targetTask = tasks.find(t => t.id === taskId);
@@ -27,15 +31,30 @@ const HomeContent = ({ name, xp, level, onTaskComplete }) => {
     };
 
     const addTask = () => {
-        if (!inputValue) return;
+        if (!inputValue.trim()) return;
+
+        // ✨ 處理 XP 上限邏輯
+        let xpVal = parseInt(inputXP, 10);
+        if (isNaN(xpVal)) xpVal = 20; // 如果沒填或填錯，預設 20
+        if (xpVal > 150) xpVal = 150; // 強制上限 150
+        if (xpVal < 0) xpVal = 0;
+
         const newTask = {
             id: Date.now(),
             title: inputValue,
-            xpValue: 20,
+            tag: inputTag || "一般",        // 沒填標籤就給預設值
+            dueDate: inputDate || "未定",   // 沒填日期就給預設值
+            xpValue: xpVal,
             isCompleted: false
         };
+
         setTasks([...tasks, newTask]);
+        
+        // ✨ 重設所有輸入框
         setInputValue('');
+        setInputTag('');
+        setInputDate('');
+        setInputXP(20);
     };
 
     return (
@@ -65,22 +84,44 @@ const HomeContent = ({ name, xp, level, onTaskComplete }) => {
             {/* 右側：代辦清單區域 */}
             <section className="todo-list-area">
                 <h2>📋 待辦清單</h2>
-                
-                {/* 新增任務區 */}
-                <div className="add-task-section" style={{ marginBottom: '20px', padding: '15px', background: '#f9f9f9', borderRadius: '8px' }}>
+    
+                <div className="add-task-section" style={{ marginBottom: '20px', padding: '15px', background: '#f9f9f9', borderRadius: '8px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    
+                    {/* 第一行：任務名稱 */}
                     <input 
                         value={inputValue} 
                         onChange={(e) => setInputValue(e.target.value)}
-                        placeholder="新增任務..."
-                        style={{ width: '40%', padding: '5px' }}
+                        placeholder="新增任務名稱..."
+                        style={{ flex: 1, padding: '8px' }}
                     />
-                    <input 
-                        value={inputValue} 
-                        onChange={(e) => setInputValue(e.target.value)}
-                        placeholder="任務標籤..."
-                        style={{ width: '40%', padding: '5px' }}
-                    />
-                    <button onClick={addTask} style={{ marginLeft: '5px' }}>發佈</button>
+
+                    {/* 第二行：標籤、日期、XP、發佈按鈕 */}
+                    <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                        <input 
+                            value={inputTag} 
+                            onChange={(e) => setInputTag(e.target.value)}
+                            placeholder="標籤 (如：運動)"
+                            style={{ flex: 1, padding: '5px' }}
+                        />
+                        <input 
+                            type="date"
+                            value={inputDate} 
+                            onChange={(e) => setInputDate(e.target.value)}
+                            style={{ flex: 1, padding: '5px' }}
+                        />
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
+                            <span style={{ fontSize: '12px', color: '#666' }}>XP:</span>
+                            <input 
+                                type="number"
+                                value={inputXP} 
+                                onChange={(e) => setInputXP(e.target.value)}
+                                max="150"
+                                placeholder="20"
+                                style={{ width: '60px', padding: '5px' }}
+                            />
+                        </div>
+                        <button onClick={addTask} className="pixel-btn">發佈</button>
+                    </div>
                 </div>
 
                 <div className="card-list">
