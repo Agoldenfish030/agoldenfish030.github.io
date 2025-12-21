@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/stonereact/static/css/main.dae0ced2.css",
+    "main.js": "/stonereact/static/js/main.5e9bca1c.js",
+    "static/js/453.1c542fa6.chunk.js": "/stonereact/static/js/453.1c542fa6.chunk.js",
+    "index.html": "/stonereact/index.html",
+    "main.dae0ced2.css.map": "/stonereact/static/css/main.dae0ced2.css.map",
+    "main.5e9bca1c.js.map": "/stonereact/static/js/main.5e9bca1c.js.map",
+    "453.1c542fa6.chunk.js.map": "/stonereact/static/js/453.1c542fa6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dae0ced2.css",
+    "static/js/main.5e9bca1c.js"
+  ]
+}
