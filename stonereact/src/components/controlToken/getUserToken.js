@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate as UseNavigate } from 'react-router-dom';
 
 const userToken = ()=>{
-    const navigate = useNavigate();
+    const navigate = UseNavigate();
 
     useEffect(async() => {
     // 從網址 hash 中抓取 token (#token=xxxx)
